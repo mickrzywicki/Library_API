@@ -37,3 +37,7 @@ plugin :tmp_restart
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
+
+# Run the Solid Queue supervisor (workers, dispatcher, recurring scheduler) inside Puma.
+# Keeps `docker compose up` to a single app container; in production you'd run `bin/jobs` separately.
+plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
