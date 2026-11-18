@@ -1,0 +1,9 @@
+refactoring:
+  serial_number: "000001"
+  title: Refactoring
+  author: Martin Fowler
+
+ddd:
+  serial_number: "000002"
+  title: Domain-Driven Design
+  author: Eric Evans
