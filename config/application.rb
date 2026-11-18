@@ -41,6 +41,11 @@ module LibraryApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.time_zone = ENV.fetch("TIME_ZONE", "Europe/Warsaw")
+
+    # Library-wide business settings.
+    config.x.library.loan_period_days = 30
+
     # Solid Queue shares the primary PostgreSQL database (tables created by a regular migration),
     # so the whole app runs on a single database.
     config.active_job.queue_adapter = :solid_queue

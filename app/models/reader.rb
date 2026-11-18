@@ -1,6 +1,8 @@
 class Reader < ApplicationRecord
   SIX_DIGITS = /\A\d{6}\z/
 
+  has_many :borrowings, dependent: :restrict_with_error
+
   normalizes :email, with: ->(email) { email.strip.downcase }
   normalizes :full_name, with: ->(name) { name.squish }
 

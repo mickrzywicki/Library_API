@@ -1,0 +1,6 @@
+# ddd is currently borrowed by jan
+ddd_by_jan:
+  book: ddd
+  reader: jan
+  borrowed_at: <%= 10.days.ago.to_fs(:db) %>
+  due_on: <%= 20.days.from_now.to_date %>
