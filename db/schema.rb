@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_18_111616) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_18_111621) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "readers", force: :cascade do |t|
+    t.string "card_number", null: false
+    t.string "full_name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_number"], name: "index_readers_on_card_number", unique: true
+    t.index ["email"], name: "index_readers_on_email", unique: true
+    t.check_constraint "card_number::text ~ '^[0-9]{6}$'::text", name: "readers_card_number_six_digits"
+  end
 
   create_table "solid_queue_batch_executions", force: :cascade do |t|
     t.bigint "job_id", null: false

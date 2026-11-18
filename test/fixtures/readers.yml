@@ -1,0 +1,9 @@
+anna:
+  card_number: "100001"
+  full_name: Anna Kowalska
+  email: anna@example.com
+
+jan:
+  card_number: "100002"
+  full_name: Jan Nowak
+  email: jan@example.com
