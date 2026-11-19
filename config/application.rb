@@ -43,8 +43,8 @@ module LibraryApi
 
     config.time_zone = ENV.fetch("TIME_ZONE", "Europe/Warsaw")
 
-    # Library-wide business settings.
-    config.x.library.loan_period_days = 30
+    # No real emails are sent: each one is saved to tmp/mails and printed in the development log.
+    config.action_mailer.delivery_method = :file
 
     # Solid Queue shares the primary PostgreSQL database (tables created by a regular migration),
     # so the whole app runs on a single database.
