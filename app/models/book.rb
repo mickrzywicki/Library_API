@@ -12,5 +12,11 @@ class Book < ApplicationRecord
 
   def borrowed? = current_borrowing.present?
 
-  def status = borrowed? ? "borrowed" : "available"
+  def status
+    if borrowed?
+      "borrowed"
+    else
+      "available"
+    end
+  end
 end
