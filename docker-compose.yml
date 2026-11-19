@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-library}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-library}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 2s
+      retries: 20
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USERNAME: ${DB_USERNAME:-library}
+      DB_PASSWORD: ${DB_PASSWORD:-library}
+      SOLID_QUEUE_IN_PUMA: "true"
+    ports:
+      - "3000:3000"
+
+volumes:
+  pg_data:
