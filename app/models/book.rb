@@ -10,9 +10,6 @@ class Book < ApplicationRecord
                             uniqueness: true
   validates :title, :author, presence: true
 
-  scope :available, -> { where.not(id: Borrowing.active.select(:book_id)) }
-  scope :borrowed, -> { where(id: Borrowing.active.select(:book_id)) }
-
   def borrowed? = current_borrowing.present?
 
   def status = borrowed? ? "borrowed" : "available"
