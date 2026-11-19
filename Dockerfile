@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 # Development image for docker-compose.yml (runs the app, tests and console).
-ARG RUBY_VERSION=4.0.9
+ARG RUBY_VERSION=4.0.10
 FROM docker.io/library/ruby:$RUBY_VERSION-slim
 
 WORKDIR /rails
