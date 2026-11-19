@@ -11,7 +11,7 @@ class BookSerializer
       author: @book.author,
       status: @book.status
     }
-    json[:borrowings] = @book.borrowings.map { BorrowingSerializer.new(_1).as_json } if @with_history
+    json[:borrowings] = @book.borrowings.map { BorrowingSerializer.new(it).as_json } if @with_history
     json
   end
 end

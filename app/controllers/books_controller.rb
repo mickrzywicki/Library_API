@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   def index
     books = Book.includes(:current_borrowing).order(:serial_number)
 
-    render json: { books: books.map { BookSerializer.new(_1).as_json } }
+    render json: { books: books.map { BookSerializer.new(it).as_json } }
   end
 
   def show
