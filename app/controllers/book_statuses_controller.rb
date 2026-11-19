@@ -12,7 +12,7 @@ class BookStatusesController < ApplicationController
   private
 
   def borrow(book)
-    reader = Reader.find_by!(card_number: params.require(:card_number))
+    reader = Reader.find_by!(card_number: params.expect(:card_number))
     book.borrowings.create!(reader:, borrowed_at: Time.current)
     render_book book
   rescue ActiveRecord::RecordNotUnique
